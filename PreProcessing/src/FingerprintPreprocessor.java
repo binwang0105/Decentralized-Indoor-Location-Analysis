@@ -2,7 +2,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-
+/*
+ * 
+ * Author Name: Bin Wang
+ * Course: E6893 Big Data Analytics
+ * Columbia University
+ * 
+ * */
 public class FingerprintPreprocessor {
 
 	private static ArrayList<String> entries = new ArrayList<String>();

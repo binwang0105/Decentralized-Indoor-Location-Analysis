@@ -3,32 +3,46 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-
+/*
+ * 
+ * Author Name: Bin Wang
+ * Course: E6893 Big Data Analytics
+ * Columbia University
+ * 
+ * */
 public class ReadText {
-
+	
 	public final void readFile(String filePath) throws IOException{
-		
+	
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath)));  
 		FingerprintPreprocessor fingerprintProcessor = FingerprintPreprocessor.getFp();
 		String line = br.readLine();
 		String primeLine = null;
+		
 		while(line != null){
 			line = normalized(line);
 			fingerprintProcessor.getEntries().add(line);
 			line = br.readLine();
 		}
+	
 	}
 
 	private String normalized(String line) {
+	
 		String substring = line;
 		String ret = null;
+		
 		substring = substring.replace(" ", ",");
 		substring = substring.substring(substring.indexOf(",")+1);
+		
 		ret = replaceThird(substring);
+		
 		return ret;
-		}
+		
+	}
 	
 	public String replaceThird(String substring){
+		
 		String ret = substring;
 		
         int index = substring.indexOf(',');
