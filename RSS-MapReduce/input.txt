@@ -1,6 +1,0 @@
-haha 5
-lala 4
-jaja 0
-dada 3
-kaka 3
-dada 2
