@@ -12,6 +12,8 @@ import java.util.ArrayList;
  * */
 public class ReadText {
 	
+	private static final boolean DEBUG = true;
+	
 	public final void readFile(String filePath) throws IOException{
 	
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath)));  
@@ -21,6 +23,12 @@ public class ReadText {
 		
 		while(line != null){
 			line = normalized(line);
+			
+			if(line.equals("zero")){
+				line = br.readLine();
+				continue;
+			}
+			
 			fingerprintProcessor.getEntries().add(line);
 			line = br.readLine();
 		}
@@ -36,6 +44,10 @@ public class ReadText {
 		substring = substring.substring(substring.indexOf(",")+1);
 		
 		ret = replaceThird(substring);
+		
+		if(ret.equals("zero")){
+			return "zero";
+		}
 		
 		return ret;
 		
@@ -58,7 +70,15 @@ public class ReadText {
         
         String temp___ = temp__.substring(index__+1);
         String header = ret.substring(0, index__+5);
-
+        
+        if(DEBUG){
+        	System.out.println(temp___);
+        }
+        
+        if(Integer.parseInt(temp___)==0){
+        	return "zero";
+        }
+        
         return part1 + part2 + part3 + " " + temp___;
     }
 }
